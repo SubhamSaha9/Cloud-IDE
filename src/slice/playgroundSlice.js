@@ -16,29 +16,11 @@ const initialItems = [
             {
                 id: uuid(),
                 title: "Array",
-                language: "javascript",
-                code: languageMap["javascript"].defaultCode,
-            },
-        ]
-    },
-    {
-        id: uuid(),
-        title: "leetcode",
-        files: [
-            {
-                id: uuid(),
-                title: "Queue",
                 language: "java",
                 code: languageMap["java"].defaultCode,
             },
-            {
-                id: uuid(),
-                title: "Array",
-                language: "python",
-                code: languageMap["python"].defaultCode,
-            },
         ]
-    },
+    }
 ];
 
 const initialState = {
@@ -92,7 +74,6 @@ const fileslice = createSlice({
         },
         editPlaygroundTitle: (state, action) => {
             const { folderId, cardId, playgroundTitle } = action.payload;
-            // state.folders[folderId].files[cardId].title = playgroundTitle;
             const folder = state.folders.find(folder => folder.id === folderId);
             if (folder) {
                 const file = folder.files.find(file => file.id === cardId);
@@ -113,8 +94,6 @@ const fileslice = createSlice({
                 }
             }
             localStorage.setItem("folders", JSON.stringify(state.folders));
-            // state.folders[folderId].files[cardId].code = newCode;
-            // state.folders[folderId].files[cardId].language = newLanguage;
         },
         addPlaygroundAndFolder: (state, action) => {
             const { folderName, FileName, cardLanguage } = action.payload;
